@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "pyright" },
+        ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls" },
       })
     end,
   },
@@ -50,6 +50,11 @@ return {
           config.settings.python = config.settings.python or {}
           config.settings.python.pythonPath = get_python_path()
         end,
+      })
+
+      -- Bash LS setup
+      lspconfig.bashls.setup({
+        capabilities = capabilities,
       })
 
       -- Keymaps
