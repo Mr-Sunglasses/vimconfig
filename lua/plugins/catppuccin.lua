@@ -11,7 +11,7 @@ return {
         nvimtree = true,
         treesitter = true,
         telescope = true,
-        neo_tree = true,
+        neotree = true,
       },
     })
     
