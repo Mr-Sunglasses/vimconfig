@@ -4,6 +4,18 @@ return {
      dependencies = { 'nvim-lua/plenary.nvim' },
      config = function()
        local builtin = require("telescope.builtin")
+       local themes = require("telescope.themes")
+       
+       require("telescope").setup({
+         defaults = themes.get_dropdown({
+           winblend = 10,
+           width = 0.8,
+           prompt_title = "Command Palette",
+           results_title = "Results",
+           preview_title = "Preview",
+         })
+       })
+       
        vim.keymap.set('n', '<C-p>', builtin.find_files, {})    
        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
      end
