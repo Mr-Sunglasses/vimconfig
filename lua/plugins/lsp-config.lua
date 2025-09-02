@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "clangd", "rust_analyzer" },
+        ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "clangd", "rust_analyzer", "gopls" },
       })
     end,
   },
@@ -102,6 +102,11 @@ return {
             },
           },
         },
+      })
+
+      -- Go LS setup
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
       })
 
       -- Keymaps
