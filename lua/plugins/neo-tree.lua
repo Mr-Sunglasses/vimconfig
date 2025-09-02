@@ -23,6 +23,8 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+		vim.keymap.set("n", "<C-n>", function()
+				require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+			end, {})
 	end,
 }
