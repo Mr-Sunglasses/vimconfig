@@ -28,6 +28,11 @@ return {
     end,
   },
   {
+    "pustota-theme/pustota.nvim",
+    version = "*",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     lazy = false,

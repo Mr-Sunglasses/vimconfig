@@ -20,7 +20,7 @@ return {
     -- vim.cmd.colorscheme("rose-pine")
     -- vim.cmd.colorscheme("kanagawa")
     -- vim.cmd.colorscheme("dracula")
-    vim.cmd.colorscheme("catppuccin")
+    vim.cmd.colorscheme("pustota")
     
     -- Available TokyoNight variants: tokyonight, tokyonight-night, tokyonight-storm, tokyonight-moon, tokyonight-day
     -- Available Rose Pine variants: rose-pine, rose-pine-main, rose-pine-moon, rose-pine-dawn
