@@ -17,7 +17,6 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
       -- Function to get the Python interpreter path
       local function get_python_path()
@@ -32,30 +31,33 @@ return {
         return fallback
       end
 
-      -- Lua LS setup
-      lspconfig.lua_ls.setup({
+      -- Setup LSP servers using vim.lsp.config
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
       })
 
-      -- TypeScript LS setup
-      lspconfig.ts_ls.setup({
+      vim.lsp.config("ts_ls", {
         capabilities = capabilities,
       })
 
-      -- Pyright setup with .venv support
-      lspconfig.pyright.setup({
+      vim.lsp.config("pyright", {
         capabilities = capabilities,
-        before_init = function(_, config)
-          config.settings = config.settings or {}
-          config.settings.python = config.settings.python or {}
-          config.settings.python.pythonPath = get_python_path()
-        end,
+        settings = {
+          python = {
+            pythonPath = get_python_path(),
+          },
+        },
       })
 
-      -- Bash LS setup
-      lspconfig.bashls.setup({
+      vim.lsp.config("bashls", {
         capabilities = capabilities,
       })
+
+      -- Apply the configuration
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("ts_ls")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("bashls")
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
