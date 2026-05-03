@@ -39,15 +39,17 @@ return {
     config = function()
       require("treesitter-context").setup({
         enable = true,
-        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-        min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+        max_lines = 0,
+        min_window_height = 0,
         line_numbers = true,
         multiline_threshold = 20,
         trim_scope = 'outer',
         mode = 'cursor',
         separator = nil,
         zindex = 20,
-        exclude = { filetype = { "markdown" } },
+        on_attach = function(buf)
+          return vim.bo[buf].filetype ~= "markdown"
+        end,
       })
     end,
   },
